@@ -1,0 +1,37 @@
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Sensitive files
+*.pem
+*.key
+*.tfvars
+*.tfvars.json
+
+# Python virtual environment
+.venv/
+venv/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+# Local TFLint binaries and archives
+**/tflint
+**/tflint_*.zip
+
+# Terraform state files (including backups)
+**/terraform.tfstate*
