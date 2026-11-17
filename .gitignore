@@ -35,3 +35,11 @@ venv/
 
 # Terraform state files (including backups)
 **/terraform.tfstate*
+# Backup and crash files
+*.backup
+terraform-crash.log
+
+# Local environment files
+.env
+.env.*
+!.env.example
