@@ -16,17 +16,66 @@ The infrastructure is defined using reusable Terraform configurations and organi
 
 ```mermaid
 flowchart TB
-    TGW["AWS Transit Gateway"]
+    subgraph AWS["AWS Region: ap-south-1"]
+        TGW["AWS Transit Gateway"]
 
-    PROD["Production VPC<br/>10.0.0.0/16"]
-    DEV["Development VPC<br/>10.1.0.0/16"]
-    SHARED["Shared Services VPC<br/>10.2.0.0/16"]
+        subgraph PROD["Production VPC | 10.0.0.0/16"]
+            PA["Private Subnet - AZ A"]
+            PB["Private Subnet - AZ B"]
+            PE["Private EC2 Workloads"]
+            EICE1["EC2 Instance Connect Endpoint"]
+            PA --> PE
+            PB --> PE
+            EICE1 -. Private access .-> PE
+        end
 
-    PROD <-->|"Controlled routing"| TGW
-    DEV <-->|"Controlled routing"| TGW
-    SHARED <-->|"Central connectivity"| TGW
+        subgraph DEV["Development VPC | 10.1.0.0/16"]
+            DA["Private Subnet - AZ A"]
+            DB["Private Subnet - AZ B"]
+            DE["Private EC2 Workloads"]
+            EICE2["EC2 Instance Connect Endpoint"]
+            DA --> DE
+            DB --> DE
+            EICE2 -. Private access .-> DE
+        end
 
-    PROD -. "No direct route configured" .- DEV
+        subgraph SHARED["Shared Services VPC | 10.2.0.0/16"]
+            SA["Private Subnet - AZ A"]
+            SB["Private Subnet - AZ B"]
+            SE["Private EC2 Workloads"]
+            EICE3["EC2 Instance Connect Endpoint"]
+            SA --> SE
+            SB --> SE
+            EICE3 -. Private access .-> SE
+        end
+
+        PROD <-->|VPC Attachment| TGW
+        DEV <-->|VPC Attachment| TGW
+        SHARED <-->|VPC Attachment| TGW
+
+        subgraph ROUTING["Dedicated Transit Gateway Route Tables"]
+            PRT["Production RT"]
+            DRT["Development RT"]
+            SRT["Shared Services RT"]
+        end
+
+        TGW --- PRT
+        TGW --- DRT
+        TGW --- SRT
+
+        subgraph MON["Centralized Monitoring"]
+            FL["VPC Flow Logs - Three VPCs"]
+            CW["Amazon CloudWatch Logs"]
+            FL --> CW
+        end
+
+        PROD -.-> FL
+        DEV -.-> FL
+        SHARED -.-> FL
+    end
+
+    POLICY["Routing policy:<br/>Production ↔ Shared Services<br/>Development ↔ Shared Services<br/>No direct Production ↔ Development route"]
+    TGW --- POLICY
 ```
 
 ### VPC Design
