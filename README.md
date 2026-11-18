@@ -101,7 +101,7 @@ The Terraform configuration defines EC2 instances without public IP addresses.
 
 AWS Transit Gateway acts as the central routing hub connecting the three VPCs.
 
-### Transit Gateway Components
+### Transit-Gateway Components
 
 - One AWS Transit Gateway.
 - Three VPC attachments.
