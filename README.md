@@ -97,7 +97,7 @@ Each VPC is designed with two private subnets distributed across two Availabilit
 
 The Terraform configuration defines EC2 instances without public IP addresses.
 
-## 3. Transit Gateway Architecture
+## 3. Transit-Gateway Architecture
 
 AWS Transit Gateway acts as the central routing hub connecting the three VPCs.
 
