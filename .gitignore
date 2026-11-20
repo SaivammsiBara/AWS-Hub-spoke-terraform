@@ -43,3 +43,5 @@ terraform-crash.log
 .env
 .env.*
 !.env.example
+*.tfplan
+tfplan
