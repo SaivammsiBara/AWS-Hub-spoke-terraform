@@ -322,7 +322,7 @@ Potential improvements include:
 
 ## 14. Author
 
-**Saivammsi Bara**
+**Bara Bawdri Saivammsi**
 
 Aspiring Cloud Engineer | AWS | Terraform | Linux
 
