@@ -1,9 +1,10 @@
 
 # Terraform
-**/.terraform/*
+**/.terraform/
 *.tfstate
 *.tfstate.*
 *.tfplan
+tfplan
 crash.log
 crash.*.log
 override.tf
@@ -21,27 +22,20 @@ terraform.rc
 *.tfvars
 *.tfvars.json
 
-# Python virtual environment
+# Python virtual environments
 .venv/
 venv/
+
+# Local TFLint binaries and archives
+**/tflint
+**/tflint_*.zip
+
+# Environment files
+.env
+.env.*
+!.env.example
 
 # IDE and OS files
 .vscode/
 .idea/
 .DS_Store
-# Local TFLint binaries and archives
-**/tflint
-**/tflint_*.zip
-
-# Terraform state files (including backups)
-**/terraform.tfstate*
-# Backup and crash files
-*.backup
-terraform-crash.log
-
-# Local environment files
-.env
-.env.*
-!.env.example
-*.tfplan
-tfplan
