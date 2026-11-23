@@ -108,12 +108,12 @@ Availability Zones.
 The Terraform configuration defines EC2 instances without public IP
 addresses.
 
-## 3. Transit Gateway Architecture
+## 3. Transit-Gateway Architecture
 
 AWS Transit Gateway acts as the central routing hub connecting the three
 VPCs.
 
-### Transit Gateway Components
+### Transit-Gateway Components
 
 -   One AWS Transit Gateway.
 -   Three VPC attachments.
