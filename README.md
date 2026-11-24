@@ -464,7 +464,12 @@ Potential improvements include:
 -   Automated infrastructure cost monitoring and FinOps controls.
 -   Expanded observability and security monitoring.
 
-## 16. Author
+## 16. License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+## 17. Author
 
 **Bara Bawdri Saivammsi**
 
