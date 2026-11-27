@@ -477,7 +477,7 @@ Aspiring Cloud Engineer \| AWS \| Terraform \| Linux
 
 **Project:** AWS Multi-VPC Hub-and-Spoke Network Architecture
 
-**Cloud Platform:** Amazon Web Services
+**Cloud Platform:** Amazon Web Services(AWS)
 
 **Infrastructure as Code:** Terraform
 
